@@ -11,15 +11,36 @@
 
 <span style="color:blue">Provide your answer here! </span>
 > Note: you can also use code snippets to illustrate your answer. 
-
+- *Non-null Types:* <br> By default, Kotlin variables cannot hold null values. If you try to assign or return null to a non-null type, it will result in a compile-time error. This ensures safety against null pointer exceptions.
 ```kotlin 
-// example code snippet
 val a: String = "value" // non-null type
+// a = null // This would cause a compile error
 ```
+- *Nullable Types:* <br> To allow a variable to hold a null value, you must explicitly mark it as nullable by adding a ? after the type. You must handle the null case properly to use the variable.
+```kotlin 
+val b: String? = null // nullable type
+println(b?.length) // Safe call, prints "null" without an exception
+```
+
+
+
 
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
 
 <span style="color:blue">Provide your answer here!</span>
+- *Lambda Expressions:* <br> These are a concise way to represent function literals in Kotlin. They can be passed as arguments to higher order functions, returned from functions, or stored in variables.
+```kotlin 
+val sum: (Int, Int) -> Int = { x, y -> x + y }
+println(sum(2, 3)) // Output: 5
+```
+- *Higher Order Functions:* <br> These are functions that can take functions as parameters or return a function. This feature allows for more abstract and flexible code structures.
+```kotlin 
+fun calculate(operation: (Int, Int) -> Int, x: Int, y: Int): Int {
+    return operation(x, y)
+}
+println(calculate(sum, 10, 20)) // Output: 30
+```
+Storing a function in a variable or passing it around allows for more dynamic and modular code. It enables you to write more general code that can handle a variety of operations with the same interface, making your code more reusable and flexible.
 
 ### Provide a solution for the following number guessing game inside `App.kt`. (3 points)
 
